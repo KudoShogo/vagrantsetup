@@ -1,0 +1,14 @@
+---
+- name: deploy Webdb
+  hosts: webdbservers
+  remote_user: vagrant
+  roles:
+    - role: common
+    - role: nginx
+    - role: composer
+    - role: memcached
+    - role: memcached-client
+    - role: mysql
+    - role: phpMyAdmin
+  tags: webdb
+

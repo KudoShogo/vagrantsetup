@@ -1,0 +1,15 @@
+[webdbservers]
+192.168.30.50
+
+[webdbservers:vars]
+db_name=valeur
+db_user=valeur
+db_pass=valeur
+db_file=valeur.sql
+db_insert_dir=valeur
+db_host=localhost
+nginx_user=vagrant
+nginx_group=vagrant
+nginx_host=localhost
+nginx_file=nginx-webdb
+

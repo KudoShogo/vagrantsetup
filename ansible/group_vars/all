@@ -1,0 +1,22 @@
+﻿---
+# Variables listed here are applicable to all host groups
+
+
+phpMyAdmin:
+  # DownLoad
+  url: https://files.phpmyadmin.net/phpMyAdmin/4.8.5/phpMyAdmin-4.8.5-all-languages.tar.gz
+  # phpMyAdmin package name
+  package_filename: phpMyAdmin-4.8.5-all-languages
+  # workdir
+  work_dir: /usr/local/src
+  # deploy dir
+  deploy_dir: /var/www
+  # phpMyAdmin home dir
+  home_dir: /var/www/pppp
+  # phpMyAdmin config
+  config_changes:
+    - regexp: "^(.*blowfish_secret.*) = .*"
+      line: "\\1 = '0C1094B92EA313E7D9E627ED468C1C5911645D6404027A134CC24';"
+
+
+
