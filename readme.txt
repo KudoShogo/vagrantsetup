@@ -1,9 +1,26 @@
-﻿# マスタ
-https://valeur.backlog.jp/wiki/VALEUR/VagrantAnsibleLaravel%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%B2%E3%81%AA%E5%BD%A2
+﻿* Laravel Project を取り出して新プロジェクトを作る方法
 
---- 以下20190219コピー ---
+{code}
+(1)ひな形プロジェクト(va_laravel_vagrant)をcloneできるようにする。
+   https://github.com/valeurgit/va_laravel_vagrant
+   開発メンバーに参加
 
-*Vagrant/ansible/Laravel 開発環境
+(2)空の新プロジェクトを作成してcloneする
+   ここでは仮に project_new と名付ける
+   https://github.com/valeurgit/project_new 
+
+(3)新プロジェクトを clone してリポジトリに入る
+%> git clone https://github.com/valeurgit/project_new 
+%> cd project_new 
+
+(4)ひな形プロジェクトを新リポジトリに pull して自分のマスタとして push する。
+%> git remote add valeurgit https://github.com/valeurgit/va_laravel_vagrant.git
+%> git pull valeurgit master  --allow-unrelated-histories
+%> git push origin master
+{/code}
+
+
+*Vagrant/ansible/Laravel 開発環境の説明
 
 本モジュールは Vagrant/ansible/Laravel+phpMyAdmin を使った開発環境のひな形です。
 - Vagrant : Centos7.3
