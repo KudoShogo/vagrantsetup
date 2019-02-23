@@ -27,6 +27,24 @@
 %> composer create-project --prefer-dist laravel/laravel html
 インストールの最後に下記のように聞かれるので Y
 Do you want to remove the existing VCS (.git, .svn..) history? [Y,n]? Y
+確認してみてください。
+http://192.168.30.50/
+{/code}
+
+* Laravel 開発サポート情報
+** Windowsの場合
+*** シンボリックリンク
+{code}
+.env ファイルを .env.local でハンドコピーしたくない場合
+初期の .env を削除して
+%> ln -s .env.local .env
+のようにシンボリックリンクで対応したいところですが、ファイルを置いているのがWindowsだとエラーになります。
+そこで、”管理者”でコマンドプロンプト(cmd)を呼び出します。管理者権限です！
+で、laravel のカレントに移動し
+ex)
+#> cd /D D:\vm\target_vagrant_project\pj\laravel
+#> mklink /D .env .env.local
+とすることで、Windowsのシンボリックリンクを作成できます。
 {/code}
 
 *Vagrant/ansible/Laravel 開発環境の説明
