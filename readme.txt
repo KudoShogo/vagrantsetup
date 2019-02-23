@@ -19,6 +19,15 @@
 %> git push origin master
 {/code}
 
+* Laravel のインストール
+{code}
+%> vagrant ssh
+もしくはターミナルから host:192.168.30.50 user: vagrant pass: vagrant　でログイン
+%> cd /var/www
+%> composer create-project --prefer-dist laravel/laravel html
+インストールの最後に下記のように聞かれるので Y
+Do you want to remove the existing VCS (.git, .svn..) history? [Y,n]? Y
+{/code}
 
 *Vagrant/ansible/Laravel 開発環境の説明
 
