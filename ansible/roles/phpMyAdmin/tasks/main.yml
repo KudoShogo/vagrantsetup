@@ -8,23 +8,24 @@
     validate_certs: no
 
 - name: phpMyAdmin unarchive file
-  command: tar zxf "{{ phpMyAdmin.deploy_dir }}/{{ phpMyAdmin.package_filename }}.tar.gz" -C "{{ phpMyAdmin.home_dir }}"
+  command: tar zxf "{{ phpMyAdmin.deploy_dir }}/{{ phpMyAdmin.package_filename }}.tar.gz" -C "{{ phpMyAdmin.deploy_dir }}"
 
 - name: phpMyAdmin config
-  command: cp -p "{{ phpMyAdmin.home_dir }}/{{ phpMyAdmin.package_filename }}/config.sample.inc.php" "{{ phpMyAdmin.home_dir }}/{{ phpMyAdmin.package_filename }}/config.inc.php"
+  command: cp -p "{{ phpMyAdmin.deploy_dir }}/{{ phpMyAdmin.package_filename }}/config.sample.inc.php" "{{ phpMyAdmin.deploy_dir }}/{{ phpMyAdmin.package_filename }}/config.inc.php"
 
 - name: phpMyAdmin config
   lineinfile:
-    dest: "{{ phpMyAdmin.home_dir }}/{{ phpMyAdmin.package_filename }}/config.inc.php"
+    dest: "{{ phpMyAdmin.deploy_dir }}/{{ phpMyAdmin.package_filename }}/config.inc.php"
     backrefs: yes
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   with_items: "{{ phpMyAdmin.config_changes }}"
 
 - name: phpMyAdmin mv dir name
-  command: mv "{{ phpMyAdmin.home_dir }}/{{ phpMyAdmin.package_filename}}"/* "{{ phpMyAdmin.home_dir }}"
+  command: mv "{{ phpMyAdmin.deploy_dir }}/{{ phpMyAdmin.package_filename}}" "{{ phpMyAdmin.home_dir }}"
 
-- name: phpMyAdmin rmdir
-  command: rm -rf "{{ phpMyAdmin.home_dir }}/{{ phpMyAdmin.package_filename}}"
-  notify: restart httpd
+- name: phpMyAdmin create link
+  command: ln -s "{{ phpMyAdmin.deploy_dir }}" /home/vagrant
+
+
 

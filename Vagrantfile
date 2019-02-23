@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
     webdb.vm.network "forwarded_port", guest: 11211, host: 12003, host_ip: "127.0.0.1" # memcached
     webdb.vm.network "private_network", ip: "192.168.30.50"
     webdb.vm.synced_folder "./ansible", "/home/vagrant/ansible", :owner=> 'vagrant', :group=>'vagrant', :mount_options => ['dmode=775', 'fmode=775']
-    webdb.vm.synced_folder "./pj/pppp", "/var/www/pppp", :owner=> 'vagrant', :group=>'vagrant', :mount_options => ['dmode=775', 'fmode=775']
+#    webdb.vm.synced_folder "./pj/pppp", "/var/www/pppp", :owner=> 'vagrant', :group=>'vagrant', :mount_options => ['dmode=775', 'fmode=775']
     webdb.vm.synced_folder "./pj/laravel", "/var/www/html", :owner=> 'vagrant', :group=>'vagrant', :mount_options => ['dmode=777', 'fmode=777']
     webdb.vm.provider :virtualbox do |vbox|
       vbox.name = "valeur-laravel"
